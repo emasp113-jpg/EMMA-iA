@@ -1,0 +1,14 @@
+{
+  "appId": "com.emma.ai",
+  "appName": "Emma",
+  "webDir": ".",
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000,
+      "backgroundColor": "#0a0e27"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "emma-ai",
+  "version": "1.0.0",
+  "description": "Emma - Tu asistente de IA personal (Gemini)",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "build": "echo 'Static app - no build needed'"
+  },
+  "keywords": ["ai", "assistant", "gemini", "emma", "capacitor"],
+  "author": "emasp113-jpg",
+  "license": "MIT",
+  "dependencies": {
+    "@capacitor/core": "^6.0.0",
+    "@capacitor/cli": "^6.0.0",
+    "@capacitor/android": "^6.0.0"
+  }
+}

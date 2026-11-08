@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0d0a08" />
+  <title>Emma – AI Core</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/emma-icon.svg" />
+</head>
+<body>
+  <!-- HOME / CENTRO -->
+  <div id="screen-home" class="screen active">
+    <header class="top-bar">
+      <div class="brand">
+        <div class="brand-orb">E</div>
+        <div>
+          <div class="brand-name">EMMA</div>
+          <div class="brand-sub">AI CORE · v2.0</div>
+        </div>
+      </div>
+      <div class="status-pill">● ÓPTIMO</div>
+      <button class="icon-btn" data-screen="config">⚙️</button>
+    </header>
+
+    <div class="hero-card">
+      <div class="hero-visual">✦</div>
+      <div id="live-clock" class="live-clock">--:--:--</div>
+      <div id="greeting-text" class="greeting">Hola</div>
+    </div>
+
+    <div class="section-label">AGENTES ACTIVOS</div>
+    <div class="agents-grid">
+      <button class="agent-card active" data-agent="Emma">
+        <span class="agent-icon">⭐</span>
+        <span>Emma</span>
+        <small class="online">● Activo</small>
+      </button>
+      <button class="agent-card" data-agent="Calma">
+        <span class="agent-icon">🌙</span>
+        <span>Calma</span>
+        <small>En espera</small>
+      </button>
+      <button class="agent-card" data-agent="Estudio">
+        <span class="agent-icon">📚</span>
+        <span>Estudio</span>
+        <small>En espera</small>
+      </button>
+      <button class="agent-card" data-agent="Juegos">
+        <span class="agent-icon">🎮</span>
+        <span>Juegos</span>
+        <small>En espera</small>
+      </button>
+      <button class="agent-card" data-agent="Fútbol">
+        <span class="agent-icon">⚽</span>
+        <span>Fútbol</span>
+        <small>En espera</small>
+      </button>
+      <button class="agent-card" data-agent="Proyección">
+        <span class="agent-icon">🚀</span>
+        <span>Proyección</span>
+        <small>En espera</small>
+      </button>
+    </div>
+
+    <div class="section-label">COMANDOS RÁPIDOS</div>
+    <div class="quick-list">
+      <button class="quick-item" data-prompt="Necesito calmarme un poco">🌙 Necesito calmarme un poco</button>
+      <button class="quick-item" data-prompt="Recomiéndame un juego">🎮 Recomiéndame un juego</button>
+      <button class="quick-item" data-prompt="Armemos mi plan a 1 año">🚀 Armemos mi plan a 1 año</button>
+      <button class="quick-item" data-prompt="Dame resultados recientes del Real Madrid">⚽ Resultados del Real Madrid</button>
+      <button class="quick-item" data-prompt="Motívame para estudiar hoy">📚 Motívame para estudiar</button>
+    </div>
+  </div>
+
+  <!-- CHAT -->
+  <div id="screen-chat" class="screen">
+    <header class="top-bar">
+      <button class="icon-btn" data-back>←</button>
+      <div>
+        <div class="brand-name">Chat con Emma</div>
+        <div class="brand-sub current-model">gemini-3.8-flash</div>
+      </div>
+      <button class="icon-btn" id="clear-chat-btn">🗑️</button>
+    </header>
+    <div id="chat-messages" class="chat-messages"></div>
+    <div class="chat-input-bar">
+      <input type="text" id="chat-input" placeholder="Escríbele a Emma..." autocomplete="off" />
+      <button id="send-btn" class="send-btn">➤</button>
+    </div>
+  </div>
+
+  <!-- MISIONES -->
+  <div id="screen-misiones" class="screen">
+    <header class="top-bar">
+      <button class="icon-btn" data-back>←</button>
+      <div class="brand-name">Mis misiones</div>
+    </header>
+    <div class="section-content">
+      <p class="section-desc">Visualízate. Planea. Hazlo.</p>
+
+      <div class="card">
+        <div class="card-title">NUEVA META</div>
+        <input type="text" id="mission-title" class="input" placeholder="Ej: Comprar mi primera moto" />
+        <input type="date" id="mission-date" class="input" style="margin-top:8px" />
+        <button id="add-mission" class="btn-primary" style="margin-top:12px;width:100%">Agregar meta</button>
+      </div>
+
+      <div class="section-label" style="margin-top:20px">TUS MISIONES</div>
+      <div id="missions-list"></div>
+    </div>
+  </div>
+
+  <!-- MEMORIA -->
+  <div id="screen-memoria" class="screen">
+    <header class="top-bar">
+      <button class="icon-btn" data-back>←</button>
+      <div>
+        <div class="brand-name">Mi memoria</div>
+        <div class="brand-sub">Privada, solo en tu teléfono</div>
+      </div>
+    </header>
+    <div class="section-content">
+      <div class="card">
+        <div class="card-title">MI DIARIO</div>
+        <textarea id="diary-input" class="input" rows="3" placeholder="Escribe lo que sientes hoy..."></textarea>
+        <button id="save-diary" class="btn-primary" style="margin-top:10px;width:100%">Guardar</button>
+      </div>
+      <div class="section-label" style="margin-top:16px">MAPA DE MEMORIA · <span id="memory-count">0 recuerdos</span></div>
+      <div id="diary-list"></div>
+    </div>
+  </div>
+
+  <!-- CONFIG -->
+  <div id="screen-config" class="screen">
+    <header class="top-bar">
+      <button class="icon-btn" data-back>←</button>
+      <div class="brand-name">Configuración</div>
+    </header>
+    <div class="section-content">
+      <label class="label">Tu nombre</label>
+      <input type="text" id="user-name" class="input" placeholder="Maycol" />
+
+      <label class="label">Clave API Gemini (AIza...)</label>
+      <input type="password" id="api-key" class="input" placeholder="AIzaSy..." />
+      <p class="hint">Gratis en <a href="https://aistudio.google.com/apikey" target="_blank">aistudio.google.com/apikey</a></p>
+
+      <label class="label">Modelo</label>
+      <select id="model-select" class="input">
+        <option value="gemini-3.8-flash">gemini-3.8-flash (recomendado)</option>
+        <option value="gemini-3.5-flash-lite">gemini-3.5-flash-lite</option>
+        <option value="gemini-4-argon">gemini-4-argon</option>
+        <option value="gemini-3.6-flash">gemini-3.6-flash</option>
+      </select>
+
+      <button id="save-config" class="btn-primary" style="margin-top:24px;width:100%">Guardar</button>
+    </div>
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <button class="nav-btn active" data-screen="home">
+      <span>⬡</span><small>Centro</small>
+    </button>
+    <button class="nav-btn" data-screen="chat">
+      <span>💬</span><small>Chat</small>
+    </button>
+    <button class="nav-btn center-mic" data-screen="chat">
+      <span>🎤</span>
+    </button>
+    <button class="nav-btn" data-screen="misiones">
+      <span>◎</span><small>Misiones</small>
+    </button>
+    <button class="nav-btn" data-screen="memoria">
+      <span>✧</span><small>Memoria</small>
+    </button>
+  </nav>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
